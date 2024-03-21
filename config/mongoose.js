@@ -1,21 +1,13 @@
 const mongoose = require('mongoose');
 
-mongoose.set('strictQuery', false);
-
-// connecting mongoose to its default server and ecommerceDB
+require('dotenv').config();
+console.log('MongoURI in DB', process.env.MONGODB_URI);
+//Configuration default for connect to MongoDB Atlas
 mongoose
-  .connect(
-    'mongodb+srv://todoapp:todo-app@cluster0.hqe00m8.mongodb.net/EcommerceAPI?retryWrites=true&w=majority'
-  )
-  .then(() => console.log('MongoDB Atlas connected'))
-  .catch((err) => console.error('MongoDB Atlas connection error:', err));
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
 
-const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'Error connecting to MongoDB'));
-
-db.once('open', function () {
-  console.log('Connected to Database :: MongoDB');
-});
-
-module.exports = db;
+  .then(() => console.log('Database Connected'))
+  .catch((error) => console.log(error));
