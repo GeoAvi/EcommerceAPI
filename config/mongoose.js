@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+mongoose.set('strictQuery', false);
+
 // connecting mongoose to its default server and ecommerceDB
 mongoose.connect(
   'mongodb+srv://todoapp:todo-app@cluster0.hqe00m8.mongodb.net/EcommerceAPI?retryWrites=true&w=majority',
