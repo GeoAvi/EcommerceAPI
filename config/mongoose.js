@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+mongoose.set('strictQuery', false);
 require('dotenv').config();
 console.log('MongoURI in DB', process.env.MONGODB_URI);
 //Configuration default for connect to MongoDB Atlas
